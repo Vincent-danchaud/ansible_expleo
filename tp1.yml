@@ -16,5 +16,40 @@
      apt:
       name: git
       state: present 
+   
+
+   - name: Install required system packages
+     apt:
+      name: "{{item}}"
+      state: latest
+      update_cache: yes
+     loop:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+   - name: Docker apt key
+     apt_key:
+      url: https://download.docker.com/linux/debian/gpg
+      state: present
+   
+   - name: Docker repository
+     apt_repository:
+      repo: deb https://download.docker.com/linux/debian 
+      state: present
+
+   - name : installation de docker
+     apt:
+      name: "{{item}}"
+      state: latest
+      update_cache: yes
+     loop:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+
 
 ...
