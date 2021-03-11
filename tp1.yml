@@ -50,6 +50,4 @@
       - docker-ce-cli
       - containerd.io
 
-
-
 ...
