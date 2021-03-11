@@ -2,22 +2,19 @@
 - name: installation de htop
   hosts: all
   tasks:
-   - name : package htop
+   - name: package htop
      apt:
       name: htop
       state: present
-
-   - name: installation zsh
+   - name: package zsh
      apt:
       name: zsh
       state: present
-   
    - name: installation de git
      apt:
       name: git
-      state: present 
-   
-   - name: Install required system packages
+      state: present
+   - name: Install required packages
      apt:
       name: "{{item}}"
       state: latest
@@ -28,18 +25,15 @@
       - curl
       - gnupg
       - lsb-release
-   
    - name: Docker apt key
      apt_key:
       url: https://download.docker.com/linux/debian/gpg
       state: present
-   
-   - name: Docker repository
+   - name: Docker apt repository
      apt_repository:
       repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable
       state: present
-
-   - name : installation de docker
+   - name: Installation Docker
      apt:
       name: "{{item}}"
       state: latest
@@ -47,6 +41,7 @@
      loop:
       - docker-ce
       - docker-ce-cli
-      - containerd.io
+      - containerd.io 
+
 
 ...
