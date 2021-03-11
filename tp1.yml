@@ -10,10 +10,12 @@
      apt:
       name: zsh
       state: present
+   
    - name: installation de git
      apt:
       name: git
       state: present
+   
    - name: Install required packages
      apt:
       name: "{{item}}"
@@ -25,15 +27,17 @@
       - curl
       - gnupg
       - lsb-release
+   
    - name: Docker apt key
      apt_key:
       url: https://download.docker.com/linux/debian/gpg
       state: present
+   
    - name: Docker apt repository
      apt_repository:
-      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable
+      repo: deb https://download.docker.com/linux/debian buster stable
       state: present
-      update_cache: yes
+
    - name: Installation Docker
      apt:
       name: "{{item}}"
@@ -43,6 +47,5 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io 
-
 
 ...
