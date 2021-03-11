@@ -37,7 +37,7 @@
    
    - name: Docker repository
      apt_repository:
-      repo: deb https://download.docker.com/linux/debian 
+      repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable 
       state: present
 
    - name : installation de docker
