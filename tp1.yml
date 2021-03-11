@@ -17,7 +17,6 @@
       name: git
       state: present 
    
-
    - name: Install required system packages
      apt:
       name: "{{item}}"
@@ -29,7 +28,7 @@
       - curl
       - gnupg
       - lsb-release
-
+   
    - name: Docker apt key
      apt_key:
       url: https://download.docker.com/linux/debian/gpg
