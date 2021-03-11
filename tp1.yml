@@ -16,6 +16,7 @@
       name: git
       state: present
    
+   #Installation Docker
    - name: Install required packages
      apt:
       name: "{{item}}"
@@ -27,6 +28,7 @@
       - curl
       - gnupg
       - lsb-release
+      - python-docker
    
    - name: Docker apt key
      apt_key:
@@ -47,5 +49,21 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io 
+   
+   - name: Module python pour docker
+     pip:
+      name: docker
+
+   - name: Installation d'un container
+     docker_container:
+      name: apache2
+      image: httpd
+      ports: "9000:80" 
+     
+   - name: debian
+     docker_container:
+      name: debian
+      image: debian   
+
 
 ...
